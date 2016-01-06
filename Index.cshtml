@@ -34,7 +34,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img ng-src="data:image/png;base64,{{x.Image}}" width="200" height="300" alt="No image">
+                                    <a href="~/ProductDetail.cshtml?id={{x.ID}}"><img ng-src="data:image/png;base64,{{x.Image}}" width="200" height="300" alt="No image"></a>
                                     <h2>{{format(x.Price)}}</h2>
                                     <a href="~/ProductDetail.cshtml?id={{x.ID}}"><p>{{x.Name}}</p></a>
                                 </div>

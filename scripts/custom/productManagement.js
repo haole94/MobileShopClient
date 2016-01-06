@@ -117,8 +117,6 @@
 
             var str = bidata.split(",");
 
-            $scope.Name = str[1];
-
             $http({
                 method: 'PUT',
                 headers: {
