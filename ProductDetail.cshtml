@@ -15,7 +15,7 @@
                         <!--getBrand Controller-->
                         <div class="brands-name" ng-controller="getBrand">
                             <ul class="nav nav-pills nav-stacked">
-                                <li ng-repeat="x in navBrand"><a href="#">{{x.Name}}</a></li>
+                                <li ng-repeat="x in navBrand"><a href="~/Shop.cshtml?brandId={{x.ID}}">{{x.Name}}</a></li>
                             </ul>
                         </div>
 

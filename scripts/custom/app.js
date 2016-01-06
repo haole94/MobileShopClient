@@ -1,3 +1,3 @@
 ﻿var app = angular.module('MobileShopClient', ['ngCookies']);
 
-var strLink = "http://mobileshopserver.apphb.com/";
+var strLink = "http://localhost:65494/";
