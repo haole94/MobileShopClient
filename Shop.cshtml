@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Shop";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+
+                    <div class="brands_products">
+
+                        <h2>Hãng</h2>
+                        <!--getBrand Controller-->
+                        <div class="brands-name" ng-controller="getBrand">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-repeat="x in navBrand"><a href="~/Shop.cshtml?brandId={{x.ID}}">{{x.Name}}</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right" ng-controller="getSomeProduct">
+
+                <!--get6RandomProducts Controller-->
+                <div class="row">
+                    <div class="features_items">
+                        <h2 class="title text-center">Giới thiệu</h2>
+
+                        <div class="col-sm-4" ng-repeat="x in products">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="~/ProductDetail.cshtml?id={{x.ID}}"><img ng-src="data:image/png;base64,{{x.Image}}" width="200" height="300" alt=""></a>
+                                        <h2>{{format(x.Price)}}</h2>
+                                        <a href="~/ProductDetail.cshtml?id={{x.ID}}"><p>{{x.Name}}</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="pagination-area">
+                    <div class="btn-group dropup">
+                        <button type="button" ng-model="page" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{page}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="x in pages"><a href="#" ng-click="changePage(x)">{{x}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/scripts/custom/shop.js"></script>
+}

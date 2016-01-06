@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Tài khoản";
+}
+
+@if (Request.Cookies["Token"] != null && Request.Cookies["Username"] != null)
+{
+    var username = Request.Cookies["Username"].Value;
+    Response.Redirect("/User.cshtml?id=" + username);
+}
+
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form" ng-controller="loginFunc">
+                    <!--login form-->
+                    <h2>Đăng nhập</h2>
+                    <form ng-submit="login()">
+                        <input type="text" placeholder="Username" ng-model="usernameLogin" />
+                        <input type="password" placeholder="Password" ng-model="passwordLogin" />
+                        <button type="submit" class="btn btn-default">Đăng nhập</button>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">HOẶC</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form" ng-controller="addAccount">
+                    <!--sign up form-->
+                    <h2>Đăng ký</h2>
+                    <form ng-submit="submit()">
+                        <input type="text" placeholder="Username" id="username" required />
+                        <p ng-model="warning">{{warning}}</p>
+                        <input type="password" placeholder="Password" ng-model="acc.Password" required />
+                        <input type="text" placeholder="Họ tên" ng-model="acc.Name" required />
+                        <input type="date" placeholder="Ngày sinh" id="birthday" max="9999-12-31" required />
+                        <input type="text" placeholder="Địa chỉ" ng-model="acc.Address" required />
+                        <input type="text" placeholder="Số điện thoại" id="phone" required />
+                        <p ng-model="warning2">{{warning2}}</p>
+                        <button type="submit" class="btn btn-default">Đăng ký</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+
+@section Scripts {
+    <script src="~/scripts/custom/account.js"></script>
+}

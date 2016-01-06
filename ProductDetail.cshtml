@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Chi tiết sản phẩm";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+
+                    <div class="brands_products">
+
+                        <h2>Hãng</h2>
+                        <!--getBrand Controller-->
+                        <div class="brands-name" ng-controller="getBrand">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-repeat="x in navBrand"><a href="#">{{x.Name}}</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="product-details" ng-controller="getProductDetail">
+
+                    <div class="col-sm-5">
+                        <div class="view-product">
+                            <img ng-src="data:image/png;base64,{{product.Image}}" alt="" />
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information" ng-model="product">
+
+                            <h2 ng-model="name">{{product.Name}}</h2>
+                            <span>
+                                <span ng-model="price">{{format(product.Price)}} đ</span>
+                                <label>Số lượng:</label>
+                                <input type="number" ng-model="quantityProDetail" ng-init="quantityProDetail=1" min="1" />
+                                <button type="button" class="btn btn-fefault cart" ng-click="addItem()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                            </span>
+                            <p><b>Màn hình:</b> {{product.Screen}}</p>
+                            <p><b>Camera sau:</b> {{product.PrimaryCamera}}</p>
+                            <p><b>Camera trước:</b> {{product.SecondaryCamera}}</p>
+                            <p><b>Hệ điều hành:</b> {{product.OS}}</p>
+                            <p><b>CPU:</b> {{product.CPU}}</p>
+                            <p><b>Chip đồ hoạ:</b> {{product.GraphicChip}}</p>
+                            <p><b>RAM:</b> {{product.RAM}}</p>
+                            <p><b>Bộ nhớ trong:</b> {{product.Storage}}</p>
+                            <p><b>Hỗ trợ thẻ tối đa:</b> {{product.SD}}R</p>
+                            <p><b>Số khe SIM:</b> {{product.SIM}}</p>
+                            <p><b>Dung lượng pin:</b> {{product.Battery}}</p>
+                            <p><b>Kết nối:</b> {{product.Comms}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/scripts/custom/productDetail.js"></script>
+}

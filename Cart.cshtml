@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Giỏ hàng";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="table-responsive cart_info" ng-controller="cartDetail">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Sản phẩm</td>
+                        <td class="description"></td>
+                        <td class="price">Giá (VNĐ)</td>
+                        <td class="quantity">Số lượng</td>
+                        <td class="total">Thành tiền (VNĐ)</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in items">
+                        <td class="cart_product">
+                            <img ng-src="data:image/png;base64,{{x.Image}}" width="90" height="100" alt="">
+                        </td>
+                        <td class="cart_description">
+                            <p><a href="~/ProductDetail.cshtml?id={{x.ID_Product}}">{{x.Name}}</a></p>
+                        </td>
+                        <td class="cart_price">
+                            <p>{{format(x.Price)}}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <input class="cart_quantity_input" type="number" ng-model="x.Quantity" min="1">
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">{{format(x.Price * x.Quantity)}}</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" ng-click="removeItem(x.ID_Product, x.ID_Cart)"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <h3>Tổng tiền:</h3>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">
+                                {{format(getSum())}}
+                            </p>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+<section id="do_action">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="signup-form" ng-controller="checkoutFunc">
+                    <h3>Thông tin đặt hàng</h3>
+                    <form ng-submit="checkout()">
+                        <input type="text" placeholder="Tên người nhận" ng-model="receiverCart" required>
+                        <input type="text" placeholder="Địa chỉ giao hàng" ng-model="addressCart" required>
+                        <input type="text" placeholder="Điện thoại liên lạc" id="phoneCart" required>
+                        <p ng-model="warning4">{{warning4}}</p>
+                        <input type="email" placeholder="Email" ng-model="emailCart" required>
+                        <button type="submit" class="btn btn-default">Đặt hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#do_action-->
+@section Scripts {
+    <script src="~/scripts/custom/cart.js"></script>
+}

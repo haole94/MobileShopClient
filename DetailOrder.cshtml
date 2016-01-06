@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Chi tiết đơn hàng";
+}
+
+<div ng-controller="detailOrderFunc">
+    <section id="cart_items">
+        <div class="container">
+
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Sản phẩm</td>
+                            <td class="description"></td>
+                            <td class="price">Giá (VNĐ)</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Thành tiền (VNĐ)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in itemHistory">
+                            <td class="cart_product">
+                                <img ng-src="data:image/png;base64,{{x.Image}}" width="90" height="100" alt="">
+                            </td>
+                            <td class="cart_description">
+                                <p><a href="~/ProductDetail.cshtml?id={{x.ID_Product}}">{{x.Name}}</a></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>{{format(x.Price)}}</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <input class="cart_quantity_input" type="number" ng-model="x.Quantity" min="1" disabled>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">{{format(x.Price * x.Quantity)}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h3>Tổng tiền:</h3>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">
+                                    {{format(getSum())}}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section> <!--/#cart_items-->
+
+    <section id="do_action">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="signup-form">
+                        <h3>Thông tin đặt hàng</h3>
+                        <form ng-submit="confirm()">
+                            <p>Tên người nhận</p>
+                            <input type="text" placeholder="Tên người nhận" ng-model="receiverHistory" disabled>
+                            <p>Địa chỉ giao hàng</p>
+                            <input type="text" placeholder="Địa chỉ giao hàng" ng-model="addressHistory" disabled>
+                            <p>Điện thoại liên lạc</p>
+                            <input type="text" placeholder="Điện thoại liên lạc" ng-model="phoneHistory" disabled>
+                            <p>Email</p>
+                            <input type="email" placeholder="Email" ng-model="emailHistory" disabled>
+                            <p>------------</p>
+                            <p>Tình trạng đơn hàng</p>
+                            <div class="btn-group">
+                                <button type="button" ng-model="status" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{status}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="confirm(-1)">Hủy đơn hàng</a></li>
+                                    <li><a href="#" ng-click="confirm(1)">Xác nhận đơn hàng</a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#do_action-->
+</div>
+
+@section Scripts {
+    <script src="~/scripts/custom/order.js"></script>
+}
+
+

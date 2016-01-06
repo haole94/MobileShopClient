@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Thông tin người dùng";
+}
+
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">          
+            <div class="col-sm-12">
+                <div class="signup-form" ng-controller="changeInfo">
+                    <!--sign up form-->
+                    <h2>Thông tin người dùng</h2>
+                    <form ng-submit="submitUpdate()">
+                        <input type="password" placeholder="Password" ng-model="passwordUpdate" required />
+                        <input type="text" placeholder="Họ tên" ng-model="nameUpdate" />
+                        <input type="date" placeholder="Ngày sinh" id="birthdayUpdate" max="9999-12-31" />
+                        <input type="text" placeholder="Địa chỉ" ng-model="addressUpdate" />
+                        <input type="text" placeholder="Số điện thoại" id="phoneUpdate" />
+                        <p ng-model="warning3">{{warning3}}</p>
+                        <button type="submit" class="btn btn-default">Cập nhật</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+@section Scripts {
+    <script src="~/scripts/custom/user.js"></script>
+}

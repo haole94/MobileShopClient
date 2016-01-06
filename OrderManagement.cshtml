@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Quản lý đơn hàng";
+}
+
+<section id="cart_items">
+    <div class="container" ng-controller="orderFunc">
+
+        <div class="btn-group">
+            <button type="button" ng-model="status" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{status}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#" ng-click="selectStatus(1)">Đã duyệt</a></li>
+                <li><a href="#" ng-click="selectStatus(0)">Chưa duyệt</a></li>
+            </ul>
+        </div>
+
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="description"><p class="text-center">Mã đơn hàng</p></td>
+                        <td class="description"><p class="text-center">Thời gian</p></td>
+                        <td class="description"><p class="text-center">Username</p></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in carts">
+                        <td class="cart_description">
+                            <p class="text-center"><a href="~/DetailOrder.cshtml?id={{x.ID}}&username={{x.Username}}">{{x.ID}}</a></p>
+                        </td>
+                        <td class="cart_description">
+                            <p class="text-center"><a href="~/DetailOrder.cshtml?id={{x.ID}}&username={{x.Username}}">{{x.PurchasedDate}}</a></p>
+                        </td>
+                        <td class="cart_description">
+                            <p class="text-center">{{x.Username}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+@section Scripts {
+    <script src="~/scripts/custom/order.js"></script>
+}

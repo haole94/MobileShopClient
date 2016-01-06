@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Tạo sản phẩm";
+}
+
+<section>
+    <div class="container">
+        <div class="row" ng-controller="addingNewProductFunc">
+
+            <div class="product-details">
+                <div class="col-sm-12">
+
+                    <!--
+                    <div class="signup-form">
+                        <h2>Hãng sản xuất</h2>
+                        <form ng-submit="createBrand()">
+                            <input type="text" placeholder="Tên hãng sản xuất" ng-model="newBrand" required/>
+                            <div class="pull-left">
+                                <button type="submit" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tạo mới
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <br />
+                    <br />
+                    -->
+
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>Chi tiết sản phẩm</h2>
+                        <form ng-submit="addProduct()">
+                            <p>Hiển thị sản phẩm</p>
+                            <div class="input-group-btn">
+                                <button type="button" ng-model="visible" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{visible}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="visible = 'On'">On</a></li>
+                                    <li><a href="#" ng-click="visible = 'Off'">Off</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                            <br />
+                            <input type="text" placeholder="Tên sản phẩm" ng-model="Name" required />
+                            <div class="input-group-btn">
+                                <button type="button" ng-model="Brand" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{Brand.Name}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="x in navBrand"><a href="#" ng-click="changeBrand(x)">{{x.Name}}</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                            <br />
+                            <input type="number" placeholder="Giá tiền" ng-model="Price" required />
+                            <input type="text" placeholder="Màn hình" ng-model="Screen" required />
+                            <input type="text" placeholder="Camera chính" ng-model="PrimaryCamera" required />
+                            <input type="text" placeholder="Camera phụ" ng-model="SecondaryCamera" required />
+                            <input type="text" placeholder="Hệ điều hành" ng-model="OS" required />
+                            <input type="text" placeholder="CPU" ng-model="CPU" required />
+                            <input type="text" placeholder="Chip đồ họa" ng-model="GraphicChip" required />
+                            <input type="text" placeholder="RAM" ng-model="RAM" required />
+                            <input type="text" placeholder="Bộ nhớ trong" ng-model="Storage" required />
+                            <input type="text" placeholder="Hỗ trợ thẻ tối đa" ng-model="SD" required />
+                            <input type="text" placeholder="Số khe SIM" ng-model="SIM" required />
+                            <input type="text" placeholder="Dung lượng pin" ng-model="Battery" required />
+                            <input type="text" placeholder="Kết nối" ng-model="Comms" required />
+
+                            <div class="pull-left">
+                                <button type="submit" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Thêm sản phẩm
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div><!--/sign up form-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/scripts/custom/addingNewProduct.js"></script>
+}
